@@ -1,6 +1,7 @@
 const Fastify = require("fastify");
 const setupDatabase = require("./db");
 const userRoutes = require("./routes/users");
+const subjectRoutes = require("./routes/subjects");
 require("dotenv").config();
 
 (async () => {
@@ -8,6 +9,7 @@ require("dotenv").config();
   const pool = await setupDatabase();
 
   fastify.register(userRoutes, { pool });
+  fastify.register(subjectRoutes, { pool });
 
   const port = process.env.PORT || 3000;
   try {

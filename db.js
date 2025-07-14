@@ -48,6 +48,16 @@ const setupDatabase = async () => {
   `);
 
   console.log("Table 'users' is ready.");
+
+  // Step 4: Ensure subjects table exists
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS subjects (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(100) NOT NULL
+    )
+  `);
+
+  console.log("Table 'subjects' is ready.");
   return pool;
 };
 
